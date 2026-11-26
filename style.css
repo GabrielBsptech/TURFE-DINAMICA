@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Libre+Franklin:wght@400;600&display=swap');
+
+/* Paleta tirada das fotos: preto e branco, com cinzas de pista */
+:root {
+    --preto: #000000;
+    --carvao: #1a1a1a;
+    --pista: #8c8c8c;
+    --giz: #e6e6e6;
+    --branco: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 16px;
+    font-family: 'Libre Franklin', Arial, sans-serif;
+    color: var(--giz);
+    background-color: var(--preto);
+    /* camada escura por cima da foto para o texto ficar legível */
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.88)),
+        url('fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Título: números de largada, letra condensada e pesada */
+h2 {
+    margin: 0 0 8px;
+    font-family: 'Big Shoulders Display', Impact, sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.6rem, 8vw, 4.5rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--branco);
+    text-align: center;
+}
+
+/* Cerca branca da pista embaixo do título */
+h2::after {
+    content: '';
+    display: block;
+    height: 14px;
+    margin: 12px auto 0;
+    width: min(420px, 80vw);
+    border-top: 4px solid var(--branco);
+    background: repeating-linear-gradient(
+        90deg,
+        var(--branco) 0 4px,
+        transparent 4px 70px
+    );
+    background-size: 100% 14px;
+    background-repeat: no-repeat;
+}
+
+/* Cartão principal */
+section {
+    width: min(520px, 100%);
+    margin-top: 24px;
+    padding: 32px 28px;
+    line-height: 2.6;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.78);
+    border: 1px solid var(--pista);
+    border-top: 6px solid var(--branco);
+    border-radius: 4px 4px 14px 14px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+/* Campos */
+input {
+    width: 100%;
+    max-width: 180px;
+    padding: 8px 12px;
+    margin-left: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--branco);
+    background: var(--carvao);
+    border: 1px solid var(--pista);
+    border-radius: 4px;
+}
+
+input:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--branco);
+    outline-offset: 2px;
+}
+
+/* Botões */
+button {
+    margin-top: 12px;
+    padding: 12px 24px;
+    font-family: 'Big Shoulders Display', Impact, sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--preto);
+    background: var(--branco);
+    border: 2px solid var(--branco);
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+button:hover {
+    color: var(--branco);
+    background: transparent;
+}
+
+/* Botão da largada ocupa a largura toda */
+.Btn {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--pista);
+}
+
+.Btn button {
+    width: 100%;
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+/* Área onde o JavaScript mostra os cavalos */
+#div_exibir {
+    margin-top: 16px;
+    line-height: 1.6;
+}
+
+#div_exibir:empty {
+    display: none;
+}
+
+#div_exibir > * {
+    margin: 8px 0;
+    padding: 8px 14px;
+    border-left: 4px solid var(--branco);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 24px 18px;
+    }
+
+    input {
+        display: block;
+        max-width: 100%;
+        margin: 0 0 8px;
+    }
+}
